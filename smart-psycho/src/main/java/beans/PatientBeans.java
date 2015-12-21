@@ -17,7 +17,7 @@ public class PatientBeans {
 	public String inscription(){
 		
 		if(patientServicesLocal.add(patient)){
-			return "succesPatient";
+			return "login";
 		}
 		return "";
 	}
