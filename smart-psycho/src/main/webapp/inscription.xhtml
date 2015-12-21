@@ -9,21 +9,21 @@
 	<h:form>
 		<h:panelGrid columns="2">
 			<h:outputLabel value="Nom et Prénom :" />
-			<h:inputText value="#{patientBeans.patient.fullName}" />
+			<h:inputText value="#{patientBeans.fullName}" />
 
 			<h:outputLabel value="Date de naissance :" />
-			<h:inputText value="#{patientBeans.patient.dateNaissance}">
+			<h:inputText value="#{patientBeans.dateNaissance}">
 				<f:convertDateTime pattern="dd-MM-yyyy" />
 			</h:inputText>
 			
 			<h:outputLabel value="Nom d'utilisateur" />
-			<h:inputText value="#{patientBeans.patient.login}" />
+			<h:inputText value="#{patientBeans.login}" />
 			
 			<h:outputLabel value="Mot de passe" />
-			<h:inputSecret value="#{patientBeans.patient.password}" />
+			<h:inputSecret value="#{patientBeans.password}" />
 			
 			<h:outputLabel value="Description" />
-			<h:inputTextarea value="#{patientBeans.patient.description}" />
+			<h:inputTextarea value="#{patientBeans.description}" />
 						
 			<h:commandButton action="#{patientBeans.inscription()}" value="Crée votre Compte" />
 		</h:panelGrid>
