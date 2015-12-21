@@ -24,6 +24,7 @@ public class Patient implements Serializable {
 	private String description;
 	private String login;
 	private String password;
+	private Date dateInscription;
 
 	private List<Experience> experiences;
 
@@ -39,6 +40,7 @@ public class Patient implements Serializable {
 		this.description = description;
 		this.login = login;
 		this.password = password;
+		this.setDateInscription(new Date());
 	}
 
 	@Override
@@ -106,6 +108,14 @@ public class Patient implements Serializable {
 
 	public void setExperiences(List<Experience> experiences) {
 		this.experiences = experiences;
+	}
+
+	public Date getDateInscription() {
+		return dateInscription;
+	}
+
+	public void setDateInscription(Date dateInscription) {
+		this.dateInscription = dateInscription;
 	}
 
 }
