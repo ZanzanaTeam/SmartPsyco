@@ -2,6 +2,7 @@ package services.implementation;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -9,6 +10,7 @@ import javax.persistence.Query;
 import services.interfaces.PatientServicesLocal;
 import domaine.Patient;
 
+@Stateless
 public class PatientServices implements PatientServicesLocal {
 
 	@PersistenceContext
