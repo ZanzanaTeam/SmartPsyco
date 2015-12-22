@@ -14,13 +14,14 @@ import domaine.Patient;
 public class PatientBeans {
 
 	private Patient patient;
-
+	
 	private String fullName;
 	private Date dateNaissance;
 	private String description;
 	private String login;
 	private String password;
-
+	private Date dateInscription;
+	
 	@EJB
 	PatientServicesLocal patientServicesLocal;
 
@@ -93,6 +94,14 @@ public class PatientBeans {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public Date getDateInscription() {
+		return dateInscription;
+	}
+
+	public void setDateInscription(Date dateInscription) {
+		this.dateInscription = dateInscription;
 	}
 
 }

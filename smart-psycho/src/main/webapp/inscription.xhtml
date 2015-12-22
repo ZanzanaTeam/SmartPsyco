@@ -18,7 +18,7 @@
 			</h:inputText>
 
 			<h:outputLabel value="Nom d'utilisateur" />
-			<h:inputText id="login" value="#{patientBeans.login}" />
+			<h:inputText value="#{patientBeans.login}" />
 			
 			<h:outputLabel value="Mot de passe" />
 			<h:inputSecret value="#{patientBeans.password}" />
@@ -26,8 +26,8 @@
 			<h:outputLabel value="Description" />
 			<h:inputTextarea value="#{patientBeans.description}" />
 
-			<h:commandButton action="#{patientBeans.inscription()}"
-				value="Crée votre Compte" />
+						
+			<h:commandButton action="#{patientBeans.inscription()}" value="Crée votre Compte" />
 		</h:panelGrid>
 		<h:messages />
 	</h:form>
