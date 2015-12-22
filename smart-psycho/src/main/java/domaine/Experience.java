@@ -23,11 +23,11 @@ public class Experience implements Serializable {
 	private String titre;
 	private String description;
 	private Date dateAjout;
+	private Boolean visible;
 
-	
-	private Patient patient; 
+	private Patient patient;
 	private List<Media> medias;
-	
+
 	public Experience() {
 		// TODO Auto-generated constructor stub
 	}
@@ -39,6 +39,7 @@ public class Experience implements Serializable {
 		this.titre = titre;
 		this.description = description;
 		this.dateAjout = dateAjout;
+		this.visible = false;
 	}
 
 	@Override
@@ -90,13 +91,21 @@ public class Experience implements Serializable {
 		this.patient = patient;
 	}
 
-	@OneToMany(mappedBy="experience")
+	@OneToMany(mappedBy = "experience")
 	public List<Media> getMedias() {
 		return medias;
 	}
 
 	public void setMedias(List<Media> medias) {
 		this.medias = medias;
+	}
+
+	public Boolean getVisible() {
+		return visible;
+	}
+
+	public void setVisible(Boolean visible) {
+		this.visible = visible;
 	}
 
 }

@@ -14,14 +14,14 @@ import domaine.Patient;
 public class PatientBeans {
 
 	private Patient patient;
-	
+
 	private String fullName;
 	private Date dateNaissance;
 	private String description;
 	private String login;
 	private String password;
 	private Date dateInscription;
-	
+
 	@EJB
 	PatientServicesLocal patientServicesLocal;
 
@@ -33,7 +33,7 @@ public class PatientBeans {
 		if (!patientServicesLocal.findPatientByLogin(login)) {
 
 			if (patientServicesLocal.add(p)) {
-				return "login";
+				return "login?faces-redirect=true";
 			}
 		}
 		FacesContext.getCurrentInstance().addMessage(null,
@@ -42,10 +42,23 @@ public class PatientBeans {
 	}
 
 	public String authentification() {
-		if (patientServicesLocal.findPatientByLoginPassword(login, password)) {
+		Patient patient = patientServicesLocal.findPatientByLoginPassword(
+				login, password);
+
+		if (patient != null) {
+			FacesContext.getCurrentInstance().getExternalContext()
+					.getSessionMap().put("patient", patient);
 			return "principalePatient";
 		}
-		return "inscription";
+		login = null;
+		password = null;
+		return "inscription?faces-redirect=true";
+	}
+
+	public String logout() {
+		FacesContext.getCurrentInstance().getExternalContext()
+				.invalidateSession();
+		return "index?faces-redirect=true";
 	}
 
 	public Patient getPatient() {

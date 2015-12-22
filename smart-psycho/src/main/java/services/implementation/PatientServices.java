@@ -62,17 +62,16 @@ public class PatientServices implements PatientServicesLocal {
 	}
 
 	@Override
-	public Boolean findPatientByLoginPassword(String login, String password) {
+	public Patient findPatientByLoginPassword(String login, String password) {
 		String jpql = "select patient from Patient patient "
 				+ "where patient.login = :login and patient.password = :password";
 		Query query = entityManager.createQuery(jpql, Patient.class);
 		query.setParameter("login", login);
 		query.setParameter("password", password);
 		try {
-			query.getSingleResult();
-			return true;
+			return (Patient) query.getSingleResult();
 		} catch (Exception ee) {
-			return false;
+			return null;
 		}
 	}
 
