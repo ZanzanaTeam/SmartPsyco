@@ -9,5 +9,5 @@ import services.interfaces.basic.ICrud;
 public interface PatientServicesLocal extends ICrud<Patient>{
 
 	Boolean findPatientByLoginPassword(String login , String password);
-	
+	Boolean findPatientByLogin(String login);
 }

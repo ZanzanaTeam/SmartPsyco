@@ -9,12 +9,12 @@
 	<h:form>
 		<h:panelGrid columns="2">
 			<h:outputLabel value="Nom d'utilisateur" />
-			<h:inputText value="#{patientBeans.patient.login}" />
+			<h:inputText value="#{patientBeans.login}" />
 
 			<h:outputLabel value="Mot de passe" />
-			<h:inputSecret value="#{patientBeans.patient.password}" />
+			<h:inputSecret value="#{patientBeans.password}" />
 
-			<h:commandButton action="#{patientBeans.authentificatin()}"
+			<h:commandButton action="#{patientBeans.authentification()}"
 				value="se connecter" />
 		</h:panelGrid>
 	</h:form>

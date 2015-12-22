@@ -1,14 +1,26 @@
 package services.utility;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
+import javax.ejb.LocalBean;
 import javax.ejb.Singleton;
+import javax.ejb.Startup;
+
+import services.interfaces.PatientServicesLocal;
 
 @Singleton
+@LocalBean
+@Startup
 public class InitDatabase {
 
+	@EJB
+	PatientServicesLocal patientServicesLocal;
+
 	@PostConstruct
-	public void init(){
-		
+	public void init() {
+
+		// patientServicesLocal.add(new Patient("Med Aymen", new Date(),
+		// "description", "admin", "password"));
 	}
-	
+
 }
