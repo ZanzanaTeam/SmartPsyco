@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter("/app/*")
+@WebFilter(urlPatterns = "/app/*")
 public class LoginFilter implements Filter {
 
 	@Override
@@ -27,9 +27,9 @@ public class LoginFilter implements Filter {
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) res;
 		HttpSession session = request.getSession(false);
-
+		System.out.println("Filtre Activer .....");
 		if (session == null || session.getAttribute("patient") == null) {
-			response.sendRedirect(request.getContextPath() + "/login");
+			response.sendRedirect(request.getContextPath() + "/login.jsf");
 		} else {
 			chain.doFilter(req, res);
 		}

@@ -48,7 +48,7 @@ public class PatientBeans {
 		if (patient != null) {
 			FacesContext.getCurrentInstance().getExternalContext()
 					.getSessionMap().put("patient", patient);
-			return "principalePatient";
+			return "app/principalePatient?faces-redirect=true";
 		}
 		login = null;
 		password = null;
