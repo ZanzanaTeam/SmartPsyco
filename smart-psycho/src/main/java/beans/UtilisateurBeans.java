@@ -5,7 +5,6 @@ import java.util.Date;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import services.interfaces.UtilisateurServicesLocal;
@@ -14,7 +13,6 @@ import domaine.Psychologue;
 import domaine.Utilisateur;
 
 @ManagedBean
-@SessionScoped
 public class UtilisateurBeans {
 
 	private Integer id;
@@ -77,12 +75,14 @@ public class UtilisateurBeans {
 		Utilisateur utilisateur = (Utilisateur) FacesContext
 				.getCurrentInstance().getExternalContext().getSessionMap()
 				.get("user");
-
+		id = utilisateur.getId();
+		utilisateur = patientServicesLocal.findById(id);
+		
 		fullName = utilisateur.getFullName();
 		login = utilisateur.getLogin();
 		password = utilisateur.getPassword();
 		description = utilisateur.getDescription();
-		id = utilisateur.getId();
+		
 		if (utilisateur instanceof Patient) {
 
 			Patient patient = (Patient) utilisateur;
@@ -107,10 +107,12 @@ public class UtilisateurBeans {
 
 			Patient patient = new Patient(fullName, login, password,
 					description, dateNaissance);
+			patient.setId(id);
 			patientServicesLocal.update(patient);
 		} else {
 			Psychologue psychologue = new Psychologue(fullName, login,
 					password, description, address, phone, email);
+			psychologue.setId(id);
 			patientServicesLocal.update(psychologue);
 		}
 		return "principale";
