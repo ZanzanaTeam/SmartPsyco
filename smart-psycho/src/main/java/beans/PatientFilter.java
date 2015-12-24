@@ -13,8 +13,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter(urlPatterns = "/app/*")
-public class LoginFilter implements Filter {
+import domaine.Patient;
+import domaine.Utilisateur;
+
+@WebFilter(urlPatterns = "/patient/*")
+public class PatientFilter implements Filter {
 
 	@Override
 	public void init(FilterConfig config) throws ServletException {
@@ -27,11 +30,16 @@ public class LoginFilter implements Filter {
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) res;
 		HttpSession session = request.getSession(false);
-		System.out.println("Filtre Activer .....");
-		if (session == null || session.getAttribute("patient") == null) {
+		if (session == null || session.getAttribute("user") == null) {
 			response.sendRedirect(request.getContextPath() + "/login.jsf");
 		} else {
-			chain.doFilter(req, res);
+			Utilisateur utilisateur = (Utilisateur) session
+					.getAttribute("user");
+			if (utilisateur instanceof Patient)
+				chain.doFilter(req, res);
+			else
+				response.sendRedirect(request.getContextPath()
+						+ "/accessdenied.jsf");
 		}
 	}
 

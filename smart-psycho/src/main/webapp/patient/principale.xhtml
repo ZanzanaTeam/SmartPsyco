@@ -6,17 +6,15 @@
 
 <h:head></h:head>
 <body>
+	<h1>Espace Patient</h1>
+	<a href="experience_ajout.xhtml">Ajouter une nouvelle experience</a>
 	<h:form>
-		<h:panelGrid columns="2">
-			<h:outputLabel value="Nom d'utilisateur" />
-			<h:inputText value="#{utilisateurBeans.login}" />
-
-			<h:outputLabel value="Mot de passe" />
-			<h:inputSecret value="#{utilisateurBeans.password}" />
-
-			<h:commandButton action="#{utilisateurBeans.authentification()}"
-				value="se connecter" />
-		</h:panelGrid>
+	
+		<h:commandLink action="#{utilisateurBeans.setUpdateProfil()}"
+			value="Modifier votre profil" />
+	
+		<h:commandLink action="#{utilisateurBeans.logout()}"
+			value="Déconnection" />
 	</h:form>
 </body>
 </html>

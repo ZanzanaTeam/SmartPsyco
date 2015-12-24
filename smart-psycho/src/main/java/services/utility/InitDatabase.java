@@ -6,7 +6,7 @@ import javax.ejb.LocalBean;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
 
-import services.interfaces.PatientServicesLocal;
+import services.interfaces.UtilisateurServicesLocal;
 
 @Singleton
 @LocalBean
@@ -14,7 +14,7 @@ import services.interfaces.PatientServicesLocal;
 public class InitDatabase {
 
 	@EJB
-	PatientServicesLocal patientServicesLocal;
+	UtilisateurServicesLocal patientServicesLocal;
 
 	@PostConstruct
 	public void init() {

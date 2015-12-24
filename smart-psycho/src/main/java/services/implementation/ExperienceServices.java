@@ -2,11 +2,14 @@ package services.implementation;
 
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import services.interfaces.ExperienceServicesLocal;
+import services.interfaces.UtilisateurServicesLocal;
 import domaine.Experience;
 
 @Stateless
@@ -14,6 +17,8 @@ public class ExperienceServices implements ExperienceServicesLocal {
 
 	@PersistenceContext
 	EntityManager entityManager;
+	
+	@EJB UtilisateurServicesLocal patientServicesLocal;
 
 	@Override
 	public Boolean add(Experience t) {
@@ -66,4 +71,12 @@ public class ExperienceServices implements ExperienceServicesLocal {
 		entityManager.merge(experience);
 	}
 
+	@Override
+	public List<Experience> findByPatient(Integer idPatient) {
+		
+		String jpql = "select e from Experience e where e.patient.id = :id";
+		Query query = entityManager.createQuery(jpql,Experience.class);
+		query.setParameter("id", idPatient);
+		return query.getResultList();
+	}
 }
