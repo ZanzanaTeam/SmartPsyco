@@ -12,22 +12,27 @@
 			<h:inputText value="#{utilisateurBeans.fullName}" required="true"
 				requiredMessage="Nom et Prénom sont obligatoire" />
 
-			<h:outputLabel value="Date de naissance :" />
-			<h:inputText value="#{utilisateurBeans.dateNaissance}">
-				<f:convertDateTime pattern="dd-MM-yyyy" />
-			</h:inputText>
-
 			<h:outputLabel value="Nom d'utilisateur" />
 			<h:inputText value="#{utilisateurBeans.login}" />
-			
+
 			<h:outputLabel value="Mot de passe" />
 			<h:inputSecret value="#{utilisateurBeans.password}" />
+
+			<h:outputLabel value="Email" />
+			<h:inputText value="#{utilisateurBeans.email}" />
+
+			<h:outputLabel value="Téléphone" />
+			<h:inputText value="#{utilisateurBeans.phone}" />
+
+			<h:outputLabel value="Adresse" />
+			<h:inputTextarea value="#{utilisateurBeans.address}" />
 
 			<h:outputLabel value="Description" />
 			<h:inputTextarea value="#{utilisateurBeans.description}" />
 
-						
-			<h:commandButton action="#{utilisateurBeans.inscription()}" value="Crée votre Compte" />
+
+			<h:commandButton action="#{utilisateurBeans.inscriptionPsycho()}"
+				value="Crée votre Compte" />
 		</h:panelGrid>
 		<h:messages />
 	</h:form>

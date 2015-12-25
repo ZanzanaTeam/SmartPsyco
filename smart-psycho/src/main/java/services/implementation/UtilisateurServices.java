@@ -52,7 +52,7 @@ public class UtilisateurServices implements UtilisateurServicesLocal {
 
 	@Override
 	public Utilisateur findById(Integer id) {
-		return entityManager.find(Patient.class, id);
+		return entityManager.find(Utilisateur.class, id);
 	}
 
 	@Override

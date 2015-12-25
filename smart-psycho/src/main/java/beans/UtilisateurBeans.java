@@ -28,11 +28,26 @@ public class UtilisateurBeans {
 	@EJB
 	UtilisateurServicesLocal patientServicesLocal;
 
-	public String inscription() {
+	public String inscriptionPatient() {
 
 		Utilisateur utilisateur = new Patient(fullName, login, password,
 				description, dateNaissance);
-		System.out.println(utilisateur);
+		if (!patientServicesLocal.findPatientByLogin(login)) {
+
+			if (patientServicesLocal.add(utilisateur)) {
+				return "login?faces-redirect=true";
+			}
+		}
+
+		FacesContext.getCurrentInstance().addMessage(null,
+				new FacesMessage("Login existe deja"));
+
+		return "";
+	}
+	
+	public String inscriptionPsycho() {
+
+		Utilisateur utilisateur = new Psychologue(fullName, login, password, description, address, phone, email);
 		if (!patientServicesLocal.findPatientByLogin(login)) {
 
 			if (patientServicesLocal.add(utilisateur)) {
@@ -87,14 +102,13 @@ public class UtilisateurBeans {
 
 			Patient patient = (Patient) utilisateur;
 			dateNaissance = patient.getDateNaissance();
-			return "modifier_profil";
 		} else {
 			Psychologue psychologue = (Psychologue) utilisateur;
 			address = psychologue.getAddress();
 			phone = psychologue.getPhone();
 			email = psychologue.getEmail();
-			return "../psycho/modifier_profil";
 		}
+		return "modifier_profil";
 	}
 
 	public String updateProfil() {
