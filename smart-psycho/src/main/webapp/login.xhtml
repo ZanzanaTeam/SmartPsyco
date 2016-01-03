@@ -6,19 +6,29 @@
 
 <h:head></h:head>
 <body>
-	<div><a href="inscription_patient.jsf">Créer un compte en tantque patient</a></div>
-	<div><a href="inscription_psycho.jsf">Créer un compte en tantque psychologue</a></div>
-	<h:form>
-		<h:panelGrid columns="2">
-			<h:outputLabel value="Nom d'utilisateur" />
-			<h:inputText value="#{utilisateurBeans.login}" />
+	<ui:composition template="/template.xhtml">
+		<ui:define name="content">
+			<div class="span9">
+				<h:panelGrid columns="1">
+					<a class="btn" href="inscription_patient.jsf">Créer un compte en tantque
+						patient</a>
+					<a class="btn" href="inscription_psycho.jsf">Créer un compte en tantque
+						psychologue</a>
+				</h:panelGrid>
+				<h:form>
+					<h:panelGrid columns="2">
+						<h:outputLabel value="Nom d'utilisateur" />
+						<h:inputText value="#{utilisateurBeans.login}" />
 
-			<h:outputLabel value="Mot de passe" />
-			<h:inputSecret value="#{utilisateurBeans.password}" />
+						<h:outputLabel value="Mot de passe" />
+						<h:inputSecret value="#{utilisateurBeans.password}" />
 
-			<h:commandButton action="#{utilisateurBeans.authentification()}"
-				value="se connecter" />
-		</h:panelGrid>
-	</h:form>
+						<h:commandButton action="#{utilisateurBeans.authentification()}"
+							value="se connecter" styleClass="btn btn-success btn-large" />
+					</h:panelGrid>
+				</h:form>
+			</div>
+		</ui:define>
+	</ui:composition>
 </body>
 </html>

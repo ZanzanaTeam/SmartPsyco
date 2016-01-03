@@ -6,30 +6,35 @@
 
 <h:head></h:head>
 <body>
-	<h:form>
-		<h:panelGrid columns="2">
-			<h:outputLabel value="Nom et Prénom :" />
-			<h:inputText value="#{utilisateurBeans.fullName}" required="true"
-				requiredMessage="Nom et Prénom sont obligatoire" />
+	<ui:composition template="/template.xhtml">
+		<ui:define name="content">
+			<h:form>
+				<h:panelGrid columns="2">
+					<h:outputLabel value="Nom et Prénom :" />
+					<h:inputText value="#{utilisateurBeans.fullName}" required="true"
+						requiredMessage="Nom et Prénom sont obligatoire" />
 
-			<h:outputLabel value="Date de naissance :" />
-			<h:inputText value="#{utilisateurBeans.dateNaissance}">
-				<f:convertDateTime pattern="dd-MM-yyyy" />
-			</h:inputText>
+					<h:outputLabel value="Date de naissance :" />
+					<h:inputText value="#{utilisateurBeans.dateNaissance}">
+						<f:convertDateTime pattern="dd-MM-yyyy" />
+					</h:inputText>
 
-			<h:outputLabel value="Nom d'utilisateur" />
-			<h:inputText value="#{utilisateurBeans.login}" />
-			
-			<h:outputLabel value="Mot de passe" />
-			<h:inputSecret value="#{utilisateurBeans.password}" />
+					<h:outputLabel value="Nom d'utilisateur" />
+					<h:inputText value="#{utilisateurBeans.login}" />
 
-			<h:outputLabel value="Description" />
-			<h:inputTextarea value="#{utilisateurBeans.description}" />
+					<h:outputLabel value="Mot de passe" />
+					<h:inputSecret value="#{utilisateurBeans.password}" />
 
-						
-			<h:commandButton action="#{utilisateurBeans.inscriptionPatient()}" value="Crée votre Compte" />
-		</h:panelGrid>
-		<h:messages />
-	</h:form>
+					<h:outputLabel value="Description" />
+					<h:inputTextarea value="#{utilisateurBeans.description}" />
+
+
+					<h:commandButton action="#{utilisateurBeans.inscriptionPatient()}"
+						value="Crée votre Compte" />
+				</h:panelGrid>
+				<h:messages />
+			</h:form>
+		</ui:define>
+	</ui:composition>
 </body>
 </html>

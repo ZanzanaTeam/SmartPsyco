@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import services.interfaces.UtilisateurServicesLocal;
@@ -13,6 +14,7 @@ import domaine.Psychologue;
 import domaine.Utilisateur;
 
 @ManagedBean
+@SessionScoped
 public class UtilisateurBeans {
 
 	private Integer id;
@@ -29,12 +31,12 @@ public class UtilisateurBeans {
 	UtilisateurServicesLocal patientServicesLocal;
 
 	public String inscriptionPatient() {
-
 		Utilisateur utilisateur = new Patient(fullName, login, password,
 				description, dateNaissance);
 		if (!patientServicesLocal.findPatientByLogin(login)) {
 
 			if (patientServicesLocal.add(utilisateur)) {
+
 				return "login?faces-redirect=true";
 			}
 		}
@@ -44,10 +46,10 @@ public class UtilisateurBeans {
 
 		return "";
 	}
-	
-	public String inscriptionPsycho() {
 
-		Utilisateur utilisateur = new Psychologue(fullName, login, password, description, address, phone, email);
+	public String inscriptionPsycho() {
+		Utilisateur utilisateur = new Psychologue(fullName, login, password,
+				description, address, phone, email);
 		if (!patientServicesLocal.findPatientByLogin(login)) {
 
 			if (patientServicesLocal.add(utilisateur)) {
@@ -66,7 +68,7 @@ public class UtilisateurBeans {
 				login, password);
 
 		if (utilisateur != null) {
-
+			id = utilisateur.getId();
 			FacesContext.getCurrentInstance().getExternalContext()
 					.getSessionMap().put("user", utilisateur);
 			if (utilisateur instanceof Patient)
@@ -82,7 +84,8 @@ public class UtilisateurBeans {
 	public String logout() {
 		FacesContext.getCurrentInstance().getExternalContext()
 				.invalidateSession();
-		return "index?faces-redirect=true";
+
+		return "../index?faces-redirect=true";
 	}
 
 	public String setUpdateProfil() {
@@ -92,12 +95,12 @@ public class UtilisateurBeans {
 				.get("user");
 		id = utilisateur.getId();
 		utilisateur = patientServicesLocal.findById(id);
-		
+
 		fullName = utilisateur.getFullName();
 		login = utilisateur.getLogin();
 		password = utilisateur.getPassword();
 		description = utilisateur.getDescription();
-		
+
 		if (utilisateur instanceof Patient) {
 
 			Patient patient = (Patient) utilisateur;
@@ -173,6 +176,15 @@ public class UtilisateurBeans {
 	}
 
 	public Integer getId() {
+
+		Utilisateur utilisateur = (Utilisateur) FacesContext
+				.getCurrentInstance().getExternalContext().getSessionMap()
+				.get("user");
+		if (utilisateur != null)
+			id = utilisateur.getId();
+		else
+			id = 0;
+
 		return id;
 	}
 

@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+	
+
+
+<h:head>
+	<base href="#{request.requestURL.substring(0, request.requestURL.length() - request.requestURI.length())}#{request.contextPath}/" />
+	
+	<meta charset="utf-8" />
+	<title>Smart Pyschologue</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description"
+		content="Admin panel developed with the Bootstrap from Twitter." />
+	<meta name="author" content="travis" />
+
+	<link href="css/bootstrap.css" rel="stylesheet" />
+	<link href="css/site.css" rel="stylesheet" />
+	<link href="css/bootstrap-responsive.css" rel="stylesheet" />
+
+</h:head>
+<body>
+	<ui:include src="header.xhtml" />
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<ui:insert name="content"></ui:insert>
+		</div>
+		<ui:include src="footer.xhtml" />
+
+	</div>
+
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

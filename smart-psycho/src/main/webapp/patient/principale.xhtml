@@ -6,15 +6,26 @@
 
 <h:head></h:head>
 <body>
-	<h1>Espace Patient</h1>
-	
-	<h:form>
-		<div><a href="experience_ajout.xhtml">Ajouter une nouvelle experience</a></div>
-		<div><h:commandLink action="#{utilisateurBeans.setUpdateProfil()}"
-			value="Modifier votre profil" /></div>
-	
-		<div><h:commandLink action="#{utilisateurBeans.logout()}"
-			value="Déconnection" /></div>
-	</h:form>
+	<ui:composition template="/template.xhtml">
+		<ui:define name="content">
+			<h1>Espace Patient</h1>
+
+			<h:form>
+				<div>
+					<a href="experience_ajout.xhtml">Ajouter une nouvelle
+						experience</a>
+				</div>
+				<div>
+					<h:commandLink action="#{utilisateurBeans.setUpdateProfil()}"
+						value="Modifier votre profil" />
+				</div>
+
+				<div>
+					<h:commandLink action="#{utilisateurBeans.logout()}"
+						value="Déconnection" />
+				</div>
+			</h:form>
+		</ui:define>
+	</ui:composition>
 </body>
 </html>

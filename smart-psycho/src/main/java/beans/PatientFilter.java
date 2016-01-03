@@ -30,7 +30,11 @@ public class PatientFilter implements Filter {
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) res;
 		HttpSession session = request.getSession(false);
+		
+		System.out.println("Filter ...");
+		
 		if (session == null || session.getAttribute("user") == null) {
+			System.out.println("Utilisateur is Null ...");
 			response.sendRedirect(request.getContextPath() + "/login.jsf");
 		} else {
 			Utilisateur utilisateur = (Utilisateur) session
