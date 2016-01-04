@@ -32,10 +32,9 @@ public class Experience implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Experience(Integer id, String titre, String description,
+	public Experience(String titre, String description,
 			Date dateAjout) {
 		super();
-		this.id = id;
 		this.titre = titre;
 		this.description = description;
 		this.dateAjout = dateAjout;
