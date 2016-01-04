@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head></h:head>
+<body>
+	<ui:composition template="/template.xhtml">
+		<ui:define name="content">
+			<h:form>
+				<div class="page-header">
+					<h1>
+						Ajouter une nouvelle experience
+					</h1>
+				</div>
+				<h:panelGrid columns="2">
+
+					<h:outputLabel value="Titre" />
+					<h:inputText value="#{experienceBean.titre}" />
+
+					<h:outputLabel value="Description" />
+					<h:inputTextarea value="#{experienceBean.description}" />
+
+					<h:outputLabel value="Nature" />
+					<h:selectOneMenu value="#{experienceBean.type}">
+						<f:selectItem itemLabel="Souvenir" itemValue="souvenir" />
+						<f:selectItem itemLabel="Rêve" itemValue="reve" />
+						<f:selectItem itemLabel="Aventure" itemValue="aventure" />
+					</h:selectOneMenu>
+
+					<h:commandButton action="#{experienceBean.addExperience()}"
+						value="Ajouter" />
+
+				</h:panelGrid>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>

@@ -32,12 +32,11 @@ public class Experience implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Experience(String titre, String description,
-			Date dateAjout) {
+	public Experience(String titre, String description) {
 		super();
 		this.titre = titre;
 		this.description = description;
-		this.dateAjout = dateAjout;
+		this.dateAjout = new Date();
 		this.visible = false;
 	}
 

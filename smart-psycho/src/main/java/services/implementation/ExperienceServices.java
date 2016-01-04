@@ -65,7 +65,6 @@ public class ExperienceServices implements ExperienceServicesLocal {
 
 	@Override
 	public void updateVisible(Integer id) {
-
 		Experience experience = findById(id);
 		experience.setVisible(!experience.getVisible());
 		entityManager.merge(experience);

@@ -8,14 +8,16 @@
 			</a> <a class="brand" href="#">Smart Psychologue</a>
 			<div class="btn-group pull-right">
 				<h:form rendered="#{utilisateurBeans.id == 0}">
-					<a class="btn" href="login.jsf"><i class="icon-user"></i>Se connecter</a>
+					<a class="btn" href="login.jsf"><i class="icon-user"></i>Se
+						connecter</a>
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
 						<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="inscription_patient.jsf">Créer un compte en tantque patient</a></li>
-						<li><a href="inscription_psycho.jsf">Créer un compte en tantque
-						psychologue</a></li>
+						<li><a href="inscription_patient.jsf">Créer un compte en
+								tantque patient</a></li>
+						<li><a href="inscription_psycho.jsf">Créer un compte en
+								tantque psychologue</a></li>
 					</ul>
 				</h:form>
 				<h:form rendered="#{utilisateurBeans.id != 0}">
@@ -24,11 +26,11 @@
 						<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="#{utilisateurBeans.setUpdateProfil()}">Profile</a></li>
-						<li><a href="principale.jsf">Mes Experiences</a></li>
+						<li><h:commandLink action="#{utilisateurBeans.setUpdateProfil()}" value="Profil" /></li>
+						<li><h:commandLink action="#{experienceBean.myExerience()}" value ="Mes Experiences" /></li>
 						<li class="divider"></li>
 						<li><h:commandLink action="#{utilisateurBeans.logout()}"
-						value="Déconnection" /></li>
+								value="Déconnection" /></li>
 					</ul>
 				</h:form>
 
@@ -37,11 +39,17 @@
 				<ul class="nav">
 					<li><a href="index.jsf">Accueil</a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">Users <b class="caret"></b></a>
+						data-toggle="dropdown">Expérience <b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="new-user.html">New User</a></li>
-							<li class="divider"></li>
-							<li><a href="users.html">Manage Users</a></li>
+							<h:form rendered="#{utilisateurBeans.id != 0}">
+								<li><h:commandLink
+										action="#{experienceBean.setAddExperience()}"
+										value="Ajouter une nouvelle experience" /></li>
+								<li class="divider"></li>
+							</h:form>
+							<li><a href="new-user.html">Aventure</a></li>
+							<li><a href="users.html">Souvenir</a></li>
+							<li><a href="users.html">Rêve</a></li>
 						</ul></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown">Roles <b class="caret"></b></a>

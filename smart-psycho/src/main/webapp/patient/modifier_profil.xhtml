@@ -9,6 +9,11 @@
 	<ui:composition template="/template.xhtml">
 		<ui:define name="content">
 			<h:form>
+				<div class="page-header">
+					<h1>
+						Modifier Votre Profil <small>All users</small>
+					</h1>
+				</div>
 				<h:panelGrid columns="2">
 					<h:outputLabel value="Nom et Prénom :" />
 					<h:inputText value="#{utilisateurBeans.fullName}" required="true"
