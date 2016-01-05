@@ -10,6 +10,7 @@ import javax.persistence.Query;
 
 import services.interfaces.UtilisateurServicesLocal;
 import domaine.Patient;
+import domaine.Psychologue;
 import domaine.Utilisateur;
 
 @Stateless
@@ -92,5 +93,11 @@ public class UtilisateurServices implements UtilisateurServicesLocal {
 			System.err.println(ee.getMessage());
 			return false;
 		}
+	}
+	
+	@Override
+	public List<Psychologue> findAllPsy() {
+		String jpql = "select psy from Psychologue psy";
+		return entityManager.createQuery(jpql, Psychologue.class).getResultList();
 	}
 }

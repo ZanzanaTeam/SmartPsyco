@@ -78,4 +78,11 @@ public class ExperienceServices implements ExperienceServicesLocal {
 		query.setParameter("id", idPatient);
 		return query.getResultList();
 	}
+	
+	@Override
+	public List<Experience> findByType(String type) {
+		String jpql = "select e from "+type+" e";
+		Query query = entityManager.createQuery(jpql,Experience.class);
+		return query.getResultList();
+	}
 }

@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head></h:head>
+<body>
+	<ui:composition template="/template.xhtml">
+		<ui:define name="content">
+			<div class="page-header">
+				<h1>
+					Liste des psychologue <small>Tous</small>
+				</h1>
+			</div>
+
+			<h:form>
+				<h:dataTable value="#{utilisateurBeans.psychologues}" var="psy"
+					rowClasses="list-users">
+					<h:column>
+						<f:facet name="header">#</f:facet>
+						<h:outputLabel value="#{psy.id}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Nom Prénom</f:facet>
+						<h:outputLabel value="#{psy.fullName}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">adresse</f:facet>
+						<h:outputLabel value="#{psy.address}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Email</f:facet>
+						<h:outputLabel value="#{psy.email}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Téléphone</f:facet>
+						<h:outputLabel value="#{psy.phone}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Action</f:facet>
+						<div class="btn-group">
+							<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown"
+								href="#">Contacter <span class="caret"></span></a>
+							<ul class="dropdown-menu pull-right">
+								<li><h:commandButton action="#{}" ><i class="icon-pencil"></i> Email</h:commandButton></li>
+								<li><h:commandButton action="#{}" ><i class="icon-trash"></i> Sms</h:commandButton></li>
+							</ul>
+						</div>
+					</h:column>
+				</h:dataTable>
+			</h:form>
+
+		</ui:define>
+	</ui:composition>
+</body>
+</html>

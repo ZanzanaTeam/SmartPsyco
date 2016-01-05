@@ -1,6 +1,7 @@
 package beans;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
@@ -26,6 +27,8 @@ public class UtilisateurBeans {
 	private String address;
 	private String phone;
 	private String email;
+	
+	private List<Psychologue> psychologues;
 
 	@EJB
 	UtilisateurServicesLocal patientServicesLocal;
@@ -134,7 +137,7 @@ public class UtilisateurBeans {
 		}
 		return "principale";
 	}
-
+	
 	public String getFullName() {
 		return fullName;
 	}
@@ -214,6 +217,11 @@ public class UtilisateurBeans {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public List<Psychologue> getPsychologues() {
+		psychologues = patientServicesLocal.findAllPsy();
+		return psychologues;
 	}
 
 }
