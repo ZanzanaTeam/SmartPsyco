@@ -16,7 +16,7 @@
 
 			<h:form>
 				<h:dataTable value="#{utilisateurBeans.psychologues}" var="psy"
-					rowClasses="list-users">
+					styleClass="table table-striped table-bordered table-condensed" rowClasses="list-users">
 					<h:column>
 						<f:facet name="header">#</f:facet>
 						<h:outputLabel value="#{psy.id}" />
@@ -47,8 +47,8 @@
 							<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown"
 								href="#">Contacter <span class="caret"></span></a>
 							<ul class="dropdown-menu pull-right">
-								<li><h:commandButton action="#{}" ><i class="icon-pencil"></i> Email</h:commandButton></li>
-								<li><h:commandButton action="#{}" ><i class="icon-trash"></i> Sms</h:commandButton></li>
+								<li><h:commandLink action="#{utilityBeans.ContacterByMail(psy.email)}" ><i class="icon-pencil"></i> Email</h:commandLink></li>
+								<li><h:commandLink action="#{utilityBeans.ContacterBySms(psy.phone)}" ><i class="icon-trash"></i> Sms</h:commandLink></li>
 							</ul>
 						</div>
 					</h:column>

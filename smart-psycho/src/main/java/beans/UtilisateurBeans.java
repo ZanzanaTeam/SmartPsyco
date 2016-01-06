@@ -138,6 +138,10 @@ public class UtilisateurBeans {
 		return "principale";
 	}
 	
+	public String psyListe(){
+		return "psy_liste";
+	}
+	
 	public String getFullName() {
 		return fullName;
 	}

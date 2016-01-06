@@ -30,12 +30,16 @@
 						<ul class="nav nav-list">
 							<li class="nav-header"><i class="icon-user"></i>
 								#{utilisateurBeans.fullName}</li>
-							<li><h:commandLink action="#{utilisateurBeans.setUpdateProfil()}" value="Profil" /></li>
-							<li><h:commandLink action="#{experienceBean.myExerience()}" value="Mes experiences" /></li>
-							<li class="nav-header"><i class="icon-signal"></i>
-								Données</li>
-							<li><h:commandLink action="#{experienceBean.AllExperience()}" value="Tous les experience" /></li>
-							<li><a href="user-stats.html">Les Psychologues</a></li>
+							<li><h:commandLink
+									action="#{utilisateurBeans.setUpdateProfil()}" value="Profil" /></li>
+							<li><h:commandLink action="#{experienceBean.myExerience()}"
+									value="Mes experiences" /></li>
+							<li class="nav-header"><i class="icon-signal"></i> Données</li>
+							<li><h:commandLink
+									action="#{experienceBean.AllExperience()}"
+									value="Tous les experience" /></li>
+							<li><h:commandLink action="#{utilisateurBeans.psyListe()}"
+									value="Les Psychologues" /></li>
 							<li><a href="visitor-stats.html">Visitors</a></li>
 							<li class="nav-header"><i class="icon-wrench"></i> Parametre</li>
 							<li><a href="#">Logout</a></li>
