@@ -1,8 +1,10 @@
 package domaine;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Psychologue extends Utilisateur implements Serializable {
@@ -14,6 +16,16 @@ public class Psychologue extends Utilisateur implements Serializable {
 	private String address;
 	private String phone;
 	private String email;
+	private List<Article> articles;
+	
+	@OneToMany(mappedBy="psychologue")
+	public List<Article> getArticles() {
+		return articles;
+	}
+
+	public void setArticles(List<Article> articles) {
+		this.articles = articles;
+	}
 
 	public Psychologue() {
 		// TODO Auto-generated constructor stub
