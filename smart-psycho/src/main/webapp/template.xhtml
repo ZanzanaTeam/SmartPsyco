@@ -32,15 +32,14 @@
 								#{utilisateurBeans.fullName}</li>
 							<li><h:commandLink
 									action="#{utilisateurBeans.setUpdateProfil()}" value="Profil" /></li>
-							<li><h:commandLink action="#{experienceBean.myExerience()}"
+							<li><h:commandLink action="#{experienceBean.myExerience('Experience')}"
 									value="Mes experiences" /></li>
 							<li class="nav-header"><i class="icon-signal"></i> Données</li>
 							<li><h:commandLink
-									action="#{experienceBean.AllExperience()}"
+									action="#{experienceBean.allExperience()}"
 									value="Tous les experience" /></li>
 							<li><h:commandLink action="#{utilisateurBeans.psyListe()}"
 									value="Les Psychologues" /></li>
-							<li><a href="visitor-stats.html">Visitors</a></li>
 							<li class="nav-header"><i class="icon-wrench"></i> Parametre</li>
 							<li><a href="#">Logout</a></li>
 						</ul>

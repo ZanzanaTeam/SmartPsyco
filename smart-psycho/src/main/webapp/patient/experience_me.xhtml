@@ -9,54 +9,75 @@
 
 	<ui:composition template="/template.xhtml">
 		<ui:define name="content">
-			<div class="page-header">
-				<h1>
-					Mes experiences<small>Tous</small>
-				</h1>
-			</div>
-				<h:dataTable value="#{experienceBean.experiences}" var="ex"
-					styleClass="table table-striped table-bordered table-condensed" rowClasses="list-users">
-					<h:column>
-						<f:facet name="header">#</f:facet>
-						<h:outputLabel value="#{ex.id}" />
-					</h:column>
+			<h:form>
+				<div class="page-header">
+					<h1>
+						Mes experiences <small><h:commandLink
+								action="#{experienceBean.myExerience('Experience')}"
+								value="Tous" /></small> <small><h:commandLink
+								action="#{experienceBean.myExerience('Reve')}" value="Rêve" /></small>
+						<small><h:commandLink
+								action="#{experienceBean.myExerience('Avanture')}"
+								value="Avanture" /></small> <small><h:commandLink
+								action="#{experienceBean.myExerience('Souvenir')}"
+								value="Souvenir" /></small>
+					</h1>
+				</div>
+			</h:form>
+			<h:dataTable value="#{experienceBean.experiences}" var="ex"
+				styleClass="table table-striped table-bordered table-condensed"
+				rowClasses="list-users">
+				<h:column>
+					<f:facet name="header">#</f:facet>
+					<h:outputLabel value="#{ex.id}" />
+				</h:column>
 
-					<h:column>
-						<f:facet name="header">Titre</f:facet>
-						<h:outputLabel value="#{ex.titre}" />
-					</h:column>
+				<h:column>
+					<f:facet name="header">Nature</f:facet>
+					<h:outputLabel value="#{ex.findType()}" />
+				</h:column>
 
-					<h:column>
-						<f:facet name="header">Date Ajout</f:facet>
-						<h:outputLabel value="#{ex.dateAjout}" />
-					</h:column>
+				<h:column>
+					<f:facet name="header">Titre</f:facet>
+					<h:outputLabel value="#{ex.titre}" />
+				</h:column>
 
-					<h:column>
-						<f:facet name="header">Status</f:facet>
-						<h:outputLabel styleClass="label label-success" value="Public" rendered="#{ex.visible}" />
-						<h:outputLabel styleClass="label label-important" value="Privé" rendered="#{!ex.visible}"/>
-					</h:column>
+				<h:column>
+					<f:facet name="header">Date Ajout</f:facet>
+					<h:outputLabel value="#{ex.dateAjout}" />
+				</h:column>
 
-					<h:column>
-						<f:facet name="header">Action</f:facet>
-						<h:form>
-							<div class="btn-group">
-								<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown"
-									href="#">Actions <span class="caret"></span></a>
-								<ul class="dropdown-menu pull-right">
-									<li><a href="#"><i class="icon-pencil"></i> Modifier</a></li>
-									<li><a href="#"><i class="icon-trash"></i> Supprimer</a></li>
-									<li><a href="#"><i class="icon-user"></i> Détails</a></li>
-									<li class="nav-header">Permissions</li>
-									<li>
-										<h:commandLink action="#{experienceBean.setVisibility(ex.id)}" rendered="#{!ex.visible}"><i class="icon-lock"></i> Partager</h:commandLink>
-										<h:commandLink action="#{experienceBean.setVisibility(ex.id)}" rendered="#{ex.visible}"><i class="icon-lock"></i>Moi uniquement</h:commandLink>
-									</li>
-								</ul>
-							</div>
-						</h:form>
-					</h:column>
-				</h:dataTable>
+				<h:column>
+					<f:facet name="header">Status</f:facet>
+					<h:outputLabel styleClass="label label-success" value="Public"
+						rendered="#{ex.visible}" />
+					<h:outputLabel styleClass="label label-important" value="Privé"
+						rendered="#{!ex.visible}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">Action</f:facet>
+					<h:form>
+						<div class="btn-group">
+							<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown"
+								href="#">Actions <span class="caret"></span></a>
+							<ul class="dropdown-menu pull-right">
+								<li><a href="#"><i class="icon-pencil"></i> Modifier</a></li>
+								<li><a href="#"><i class="icon-trash"></i> Supprimer</a></li>
+								<li><a href="#"><i class="icon-user"></i> Détails</a></li>
+								<li class="nav-header">Permissions</li>
+								<li><h:commandLink
+										action="#{experienceBean.setVisibility(ex.id)}"
+										rendered="#{!ex.visible}">
+										<i class="icon-lock"></i> Partager</h:commandLink> <h:commandLink
+										action="#{experienceBean.setVisibility(ex.id)}"
+										rendered="#{ex.visible}">
+										<i class="icon-lock"></i>Moi uniquement</h:commandLink></li>
+							</ul>
+						</div>
+					</h:form>
+				</h:column>
+			</h:dataTable>
 		</ui:define>
 	</ui:composition>
 </body>

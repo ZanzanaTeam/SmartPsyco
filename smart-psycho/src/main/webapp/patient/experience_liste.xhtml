@@ -9,8 +9,52 @@
 	<ui:composition template="/template.xhtml">
 		<ui:define name="content">
 			<div class="page-header">
-				<h1>Liste des experiences <small>Tous</small></h1>
+				<h1>
+					Liste des experiences <small>Tous</small>
+				</h1>
 			</div>
+
+			<h:dataTable value="#{experienceBean.experiencesAll}" var="ex"
+				styleClass="table table-striped table-bordered table-condensed"
+				rowClasses="list-users">
+				<h:column>
+					<f:facet name="header">#</f:facet>
+					<h:outputLabel value="#{ex.id}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">Nature</f:facet>
+					<h:outputLabel value="#{ex.findType()}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">Titre</f:facet>
+					<h:outputLabel value="#{ex.titre}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">Date Ajout</f:facet>
+					<h:outputLabel value="#{ex.dateAjout}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">Patient</f:facet>
+					<h:outputLabel value="#{ex.patient.fullName}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">Action</f:facet>
+					<h:form>
+						<div class="btn-group">
+							<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown"
+								href="#">Actions <span class="caret"></span></a>
+							<ul class="dropdown-menu pull-right">
+								<li class="nav-header">Permissions</li>
+							</ul>
+						</div>
+					</h:form>
+				</h:column>
+			</h:dataTable>
 		</ui:define>
 	</ui:composition>
 </body>

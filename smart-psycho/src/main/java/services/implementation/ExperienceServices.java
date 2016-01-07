@@ -58,7 +58,7 @@ public class ExperienceServices implements ExperienceServicesLocal {
 
 	@Override
 	public List<Experience> findAll() {
-		String jpql = "select ex from Experience ex";
+		String jpql = "select ex from Experience ex where ex.visible = true";
 		return entityManager.createQuery(jpql, Experience.class)
 				.getResultList();
 	}
@@ -80,9 +80,10 @@ public class ExperienceServices implements ExperienceServicesLocal {
 	}
 	
 	@Override
-	public List<Experience> findByType(String type) {
-		String jpql = "select e from "+type+" e";
+	public List<Experience> findByType(String type, Integer idPatient) {
+		String jpql = "select e from "+type+" e where e.patient.id = :id";
 		Query query = entityManager.createQuery(jpql,Experience.class);
+		query.setParameter("id", idPatient);
 		return query.getResultList();
 	}
 }

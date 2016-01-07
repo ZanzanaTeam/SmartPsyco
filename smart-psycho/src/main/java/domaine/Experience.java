@@ -45,6 +45,13 @@ public class Experience implements Serializable {
 		return "Experience [id=" + id + ", titre=" + titre + ", description="
 				+ description + ", dateAjout=" + dateAjout + "]";
 	}
+	
+	public String findType(){
+		if(this instanceof Avanture)return "Aventure";
+		if(this instanceof Reve)return "Rêve";
+		if(this instanceof Souvenir)return "Souvenir";
+		return "";
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
