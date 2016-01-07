@@ -23,41 +23,40 @@
 								value="Souvenir" /></small>
 					</h1>
 				</div>
-			</h:form>
-			<h:dataTable value="#{experienceBean.experiences}" var="ex"
-				styleClass="table table-striped table-bordered table-condensed"
-				rowClasses="list-users">
-				<h:column>
-					<f:facet name="header">#</f:facet>
-					<h:outputLabel value="#{ex.id}" />
-				</h:column>
 
-				<h:column>
-					<f:facet name="header">Type</f:facet>
-					<h:outputLabel value="#{ex.findType()}" />
-				</h:column>
+				<h:dataTable value="#{experienceBean.experiences}" var="ex"
+					styleClass="table table-striped table-bordered table-condensed"
+					rowClasses="list-users">
+					<h:column>
+						<f:facet name="header">#</f:facet>
+						<h:outputLabel value="#{ex.id}" />
+					</h:column>
 
-				<h:column>
-					<f:facet name="header">Titre</f:facet>
-					<h:outputLabel value="#{ex.titre}" />
-				</h:column>
+					<h:column>
+						<f:facet name="header">Type</f:facet>
+						<h:outputLabel value="#{ex.findType()}" />
+					</h:column>
 
-				<h:column>
-					<f:facet name="header">Date Ajout</f:facet>
-					<h:outputLabel value="#{ex.dateAjout}" />
-				</h:column>
+					<h:column>
+						<f:facet name="header">Titre</f:facet>
+						<h:outputLabel value="#{ex.titre}" />
+					</h:column>
 
-				<h:column>
-					<f:facet name="header">Status</f:facet>
-					<h:outputLabel styleClass="label label-success" value="Public"
-						rendered="#{ex.visible}" />
-					<h:outputLabel styleClass="label label-important" value="Privé"
-						rendered="#{!ex.visible}" />
-				</h:column>
+					<h:column>
+						<f:facet name="header">Date Ajout</f:facet>
+						<h:outputLabel value="#{ex.dateAjout}" />
+					</h:column>
 
-				<h:column>
-					<f:facet name="header">Action</f:facet>
-					<h:form>
+					<h:column>
+						<f:facet name="header">Status</f:facet>
+						<h:outputLabel styleClass="label label-success" value="Public"
+							rendered="#{ex.visible}" />
+						<h:outputLabel styleClass="label label-important" value="Privé"
+							rendered="#{!ex.visible}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Action</f:facet>
 						<div class="btn-group">
 							<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown"
 								href="#">Actions <span class="caret"></span></a>
@@ -75,9 +74,13 @@
 										<i class="icon-lock"></i>Moi uniquement</h:commandLink></li>
 							</ul>
 						</div>
-					</h:form>
-				</h:column>
-			</h:dataTable>
+					</h:column>
+				</h:dataTable>
+
+				<h:commandLink action="#{experienceBean.setAddExperience()}"
+					value="Ajouter une nouvelle experience"
+					styleClass="btn btn-success" />
+			</h:form>
 		</ui:define>
 	</ui:composition>
 </body>

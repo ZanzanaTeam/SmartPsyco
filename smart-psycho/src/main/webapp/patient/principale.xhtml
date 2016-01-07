@@ -12,8 +12,7 @@
 
 			<h:form>
 				<div>
-					<a href="experience_ajout.xhtml">Ajouter une nouvelle
-						experience</a>
+					<h:commandLink action="#{experienceBean.setAddExperience()}" value="Ajouter une nouvelle experience" />
 				</div>
 				<div>
 					<h:commandLink action="#{utilisateurBeans.setUpdateProfil()}"
