@@ -48,7 +48,7 @@ public class Experience implements Serializable {
 	
 	public String findType(){
 		if(this instanceof Avanture)return "Aventure";
-		if(this instanceof Reve)return "Rêve";
+		if(this instanceof Reve)return "RÃªve";
 		if(this instanceof Souvenir)return "Souvenir";
 		return "";
 	}

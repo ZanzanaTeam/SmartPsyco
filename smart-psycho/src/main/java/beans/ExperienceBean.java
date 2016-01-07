@@ -113,10 +113,11 @@ public class ExperienceBean {
 	}
 
 	public List<Experience> getExperiences() {
-//		Utilisateur utilisateur = (Utilisateur) FacesContext.getCurrentInstance()
-//				.getExternalContext().getSessionMap().get("user");
-//
-//		setExperiences(experienceServicesLocal.findByPatient(utilisateur.getId()));
+		Utilisateur utilisateur = (Utilisateur) FacesContext.getCurrentInstance()
+				.getExternalContext().getSessionMap().get("user");
+
+		setExperiences(experienceServicesLocal.findByType("Experience", utilisateur.getId()));
+		
 		return experiences;
 	}
 
